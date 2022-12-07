@@ -1,6 +1,6 @@
-package com.swm.sportwithme.dao;
+package com.klozevitz.sportwithme2_0.dao;
 
-import com.swm.sportwithme.model.User;
+import com.klozevitz.sportwithme2_0.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserDAO extends JpaRepository<User, Long> {

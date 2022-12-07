@@ -1,4 +1,4 @@
-package com.swm.sportwithme.configs;
+package com.klozevitz.sportwithme2_0.configs;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,13 +15,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    private static final String[] mappingsForAll = {"/" ,"/login", "/home_page", "/register",
-            "/log_reg_page", "/error_page", "/checkLoginForRegistration"};
-    private static final String[] mappingsForAdmin = {"/admin_page"};
+    private static final String[] endpointsForAll = {"/" ,"/login", "/home_page", "/register",
+            "/onLoad", "/error_page", "/checkLoginForRegistration"};
+    private static final String[] endpointsForAdmin = {"/admin_page"};
 
     @Override
     public void configure(WebSecurity web) {
-        web.ignoring().antMatchers("/css/**", "/scripts/**");
+        web.ignoring().antMatchers("/styles/**", "/scripts/**");
     }
 
     @Override
@@ -33,8 +33,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .and()
                 .authorizeRequests()
                 .antMatchers("/profile").hasAnyRole("ADMIN", "USER", "STRIKED")
-                .antMatchers(mappingsForAdmin).hasRole("ADMIN")
-                .antMatchers(mappingsForAll).permitAll()
+                .antMatchers(endpointsForAdmin).hasRole("ADMIN")
+                .antMatchers(endpointsForAll).permitAll()
                 .anyRequest().authenticated()
 //                .and()
 //                .formLogin().loginPage("/login").defaultSuccessUrl("/").failureUrl("/").permitAll()

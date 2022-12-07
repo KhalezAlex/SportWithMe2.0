@@ -1,6 +1,6 @@
-package com.swm.sportwithme.dao;
+package com.klozevitz.sportwithme2_0.dao;
 
-import com.swm.sportwithme.model.Role;
+import com.klozevitz.sportwithme2_0.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RoleDAO extends JpaRepository<Role, Long> {

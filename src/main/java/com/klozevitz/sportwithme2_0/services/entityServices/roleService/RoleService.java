@@ -1,6 +1,6 @@
-package com.swm.sportwithme.services.entityServices.roleService;
+package com.klozevitz.sportwithme2_0.services.entityServices.roleService;
 
-import com.swm.sportwithme.model.Role;
+import com.klozevitz.sportwithme2_0.model.Role;
 
 public interface RoleService {
     void save(Long id, String name);

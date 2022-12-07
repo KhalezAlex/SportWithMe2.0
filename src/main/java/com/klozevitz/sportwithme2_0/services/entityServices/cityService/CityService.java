@@ -1,8 +1,7 @@
-package com.swm.sportwithme.services.entityServices.cityService;
-
-import com.swm.sportwithme.model.City;
+package com.klozevitz.sportwithme2_0.services.entityServices.cityService;
 
 
+import com.klozevitz.sportwithme2_0.model.City;
 
 //дописать ссылку на страну
 public interface CityService {

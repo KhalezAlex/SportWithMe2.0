@@ -1,4 +1,4 @@
-package com.swm.sportwithme.model;
+package com.klozevitz.sportwithme2_0.model;
 
 import javax.persistence.*;
 

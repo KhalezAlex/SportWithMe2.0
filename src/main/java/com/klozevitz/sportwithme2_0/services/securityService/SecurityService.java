@@ -1,4 +1,4 @@
-package com.swm.sportwithme.services.securityService;
+package com.klozevitz.sportwithme2_0.services.securityService;
 
 public interface SecurityService {
     String findLoggedUserName();

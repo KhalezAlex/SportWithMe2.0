@@ -1,10 +1,10 @@
-package com.swm.sportwithme.utilities;
+package com.klozevitz.sportwithme2_0.utilities;
 
-import com.swm.sportwithme.model.User;
-import com.swm.sportwithme.services.entityServices.cityService.CityServiceImplementation;
-import com.swm.sportwithme.services.entityServices.countryService.CountryServiceImplementation;
-import com.swm.sportwithme.services.entityServices.roleService.RoleServiceImplementation;
-import com.swm.sportwithme.services.entityServices.userService.UserServiceImplementation;
+import com.klozevitz.sportwithme2_0.model.User;
+import com.klozevitz.sportwithme2_0.services.entityServices.cityService.CityServiceImplementation;
+import com.klozevitz.sportwithme2_0.services.entityServices.countryService.CountryServiceImplementation;
+import com.klozevitz.sportwithme2_0.services.entityServices.roleService.RoleServiceImplementation;
+import com.klozevitz.sportwithme2_0.services.entityServices.userService.UserServiceImplementation;
 
 public class TablesInit {
     public static void rolesTableInit(RoleServiceImplementation roleService) {

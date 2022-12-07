@@ -1,7 +1,7 @@
-package com.swm.sportwithme.services.entityServices.countryService;
+package com.klozevitz.sportwithme2_0.services.entityServices.countryService;
 
-import com.swm.sportwithme.model.Country;
-import com.swm.sportwithme.dao.CountryDAO;
+import com.klozevitz.sportwithme2_0.dao.CountryDAO;
+import com.klozevitz.sportwithme2_0.model.Country;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

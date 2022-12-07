@@ -1,10 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Home_page</title>
+    <link media="all" rel="stylesheet" href="styles/index.css">
 </head>
 <body>
-$END$
+<header>
+    <div class="div_emblem" id="div_emblem">
+    </div>
+    <select class="select_city">
+    </select>
+    <button class="button button--0" id="button_new_event" data-path="modal_new_event">new event</button>
+    <button class="button button--1" id="button_chat" data-path="modal_chat">chat</button>
+    <button class="button button--2" id="button_profile" data-path="modal_profile">profile</button>
+    <button class="button button--3" id="button_admin_page" data-path="modal_admin_page">admin page</button>
+    <button class="button button--4" id="button_log_reg_form" data-path="modal_log_reg">sign in</button>
+</header>
+<div class="container">
+    <div class="modal-overlay">
+        <div class="modals">
+            <div id="modal_log_reg" class="modal modal--1" data-target="modal_log_reg">
+                <div id="div_reg_log_choice" class="taskChoice">
+                    <p class="parChoice" id="par_Login" onclick="chooseLogin()">Sign in</p>
+                    <p class="parChoice" id="par_Register" onclick="chooseRegister()">Register</p>
+                </div>
+                <form id="form_login" class="form_login" method="post">
+                    <input type="text" id="input_login" class="input_reg_log_data"
+                           placeholder="login" name="username">
+                    <input type="password" id="input_password" class="input_reg_log_data"
+                           placeholder="password" name="password">
+                    <input type="password" id="input_password_repeat" class="input_reg_log_data"
+                           placeholder="repeat password">
+                    <input type="submit" id="button_submit_form_login" class="input_reg_log_submit">
+                </form>
+            </div>
+            <div id="modal_admin_page" class="modal modal--2" data-target="modal_admin_page">
+                modal_admin_page
+            </div>
+        </div>
+    </div>
+
+
+    <div class="div_search">
+        <form class="form_search_event">
+        </form>
+    </div>
+    <div id="div_compilation" class="div_compilation">
+        <div class="div_your_events">
+
+        </div>
+
+        <div class="div_random_events">
+
+        </div>
+    </div>
+    <div class="div_RSS_mass_events">
+
+    </div>
+</div>
+
+<footer>
+
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.js"></script>
+<script src="scripts/index_modals_manager.js"></script>
+<script src="scripts/onloadRequest.js"></script>
+<script src="scripts/modal_reg_log_manager.js"></script>
+
 </body>
 </html>

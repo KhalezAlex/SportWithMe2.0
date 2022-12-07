@@ -1,6 +1,4 @@
-package com.swm.sportwithme.model;
-
-import lombok.Data;
+package com.klozevitz.sportwithme2_0.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -8,7 +6,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
-@Data
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
