@@ -25,6 +25,7 @@ public class UserServiceImplementation implements UserService {
     @Override
     @Transactional
     public boolean save(User user) {
+        System.out.println("Один парраметр");
         if (userDAO.findByUsername(user.getUsername()) != null)
             return false;
         user.setPassword(encoder.encode(user.getPassword()));
@@ -38,6 +39,7 @@ public class UserServiceImplementation implements UserService {
     @Override
     @Transactional
     public boolean save(User user, Long roleId) {
+        System.out.println("Два парраметр");
         if (userDAO.findByUsername(user.getUsername()) != null)
             return false;
         user.setPassword(encoder.encode(user.getPassword()));
