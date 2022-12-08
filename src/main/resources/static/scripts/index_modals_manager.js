@@ -5,6 +5,8 @@ const modals = document.querySelectorAll(".modal")
 buttons.forEach((e1) => {
     e1.addEventListener("click", (e) => {
         let path= e.currentTarget.getAttribute("data-path");
+        if (path === "modal_log_reg")
+            flushRegistrationInputs();
         modals.forEach((e1) => {
             e1.classList.remove("modals--visible");
         })

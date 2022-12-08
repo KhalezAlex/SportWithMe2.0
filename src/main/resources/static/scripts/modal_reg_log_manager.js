@@ -59,3 +59,26 @@ function onPasswordRepeatInput() {
         changeAbilitySubmitLoginButton();
     })
 }
+
+$("#button_submit_form_login").on("click", function () {
+    $.ajax({
+        url: $("#form_login").attr("action"),
+        method: 'post',
+        dataType: 'html',
+        data: {
+            username: $("#input_login").val(),
+            password: $("#input_password").val()
+        },
+        success: function (data){
+            if(data === "Ok") {
+                modalOverlay.classList.remove("modal-overlay--visible");
+                modals.forEach((e1) => {
+                    e1.classList.remove("modals--visible");
+                })
+            } else {
+                alert("Login is already in use");
+                flushRegistrationInputs();
+            }
+        }
+    })
+});
