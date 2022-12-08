@@ -12,17 +12,20 @@ import org.springframework.web.bind.annotation.RestController;
 public class RegistrationController {
     @Autowired
     private UserServiceImplementation userService;
-
     @Autowired
     private SecurityServiceImplementation securityService;
 
     @PostMapping("/register")
-    public boolean register(@ModelAttribute User user){
-        return userService.save(new User(user.getUsername(), user.getPassword()));
+    public String register(@ModelAttribute User user){
+        if(!userService.save(new User(user.getUsername(), user.getPassword())))
+            return "registration failed";
+        return "registered";
     }
 
     @PostMapping("/login")
-    public boolean login(@ModelAttribute User user){
-        return securityService.login(user.getUsername(), user.getPassword());
+    public String login(@ModelAttribute User user){
+        if (!securityService.login(user.getUsername(), user.getPassword()))
+            return "login failed";
+        return "login success";
     }
 }

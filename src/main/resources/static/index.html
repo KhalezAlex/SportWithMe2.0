@@ -25,20 +25,21 @@
                     <p class="parChoice" id="par_Login" onclick="chooseLogin()">Sign in</p>
                     <p class="parChoice" id="par_Register" onclick="chooseRegister()">Register</p>
                 </div>
-                <div id="form_login" class="form_login">
+                <form id="div_login" class="div_login" method="post">
                     <input type="text" id="input_login" class="input_reg_log_data"
                            placeholder="login" name="username">
                     <input type="password" id="input_password" class="input_reg_log_data"
                            placeholder="password" name="password">
                     <input type="password" id="input_password_repeat" class="input_reg_log_data"
                            placeholder="repeat password">
-                    <input type="button" id="button_submit_form_login" class="input_reg_log_submit">
-                </div>
+                    <input type="button" id="button_submit_div_login" class="input_reg_log_submit">
+                </form>
             </div>
             <div id="modal_admin_page" class="modal modal--2" data-target="modal_admin_page">
-                modal_admin_page
-
-                <button><a href="/logout">Logout</a></button>
+                admin <a href="/logout">   logout</a>
+            </div>
+            <div id="modal_profile" class="modal modal--2" data-target="modal_rofile">
+                user <a href="/logout">   logout</a>
             </div>
         </div>
     </div>

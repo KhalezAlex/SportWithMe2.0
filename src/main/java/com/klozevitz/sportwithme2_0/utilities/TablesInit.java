@@ -32,8 +32,9 @@ public class TablesInit {
 
     public static void adminInit(UserServiceImplementation userServiceImplementation) {
         if (userServiceImplementation.findByUsername("admin") == null) {
-            User user = new User("admin", "admin");
-            userServiceImplementation.save(user, 1L);
+            userServiceImplementation.save(new User("admin", "admin"), 1L);
+            userServiceImplementation.save(new User("user", "user"), 2L);
+            userServiceImplementation.save(new User("loser", "loser"), 3L);
         }
     }
 }

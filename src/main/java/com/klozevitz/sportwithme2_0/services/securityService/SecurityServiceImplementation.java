@@ -1,5 +1,6 @@
 package com.klozevitz.sportwithme2_0.services.securityService;
 
+import com.klozevitz.sportwithme2_0.services.entityServices.userService.UserServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -14,6 +15,8 @@ public class SecurityServiceImplementation implements SecurityService{
     AuthenticationManager authenticationManager;
     @Autowired
     UserDetailsService userDetailsService;
+    @Autowired
+    UserServiceImplementation userService;
 
 
     @Override
@@ -26,6 +29,8 @@ public class SecurityServiceImplementation implements SecurityService{
 
     @Override
     public boolean login(String username, String password) {
+        if (userService.findByUsername(username) == null)
+            return false;
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
         UsernamePasswordAuthenticationToken token =
                 new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
