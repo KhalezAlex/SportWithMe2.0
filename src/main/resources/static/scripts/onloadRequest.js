@@ -3,37 +3,52 @@ function onLoadRequest() {
         url: "/onLoad",
         type: "GET",
         success: function (data) {
-            console.log(data);
-            if (JSON.parse(data).includes("ANON")) {
+            let userData = JSON.parse(data);
+
+            if (userData.auth.includes("ANON")) {
                 $("#button_new_event").attr("disabled", "disabled");
                 $("#button_chat").attr("disabled", "disabled");
-                $("#button_profile").attr("disabled", "disabled");
                 $("#button_admin_page").attr("disabled", "disabled"); //css("visibility", "hidden");
-                $("#button_log_reg_form").removeAttr("disabled");
+                buttonLog_Profile(userData)
             }
-            if (JSON.parse(data).includes("ADMIN")) {
+            if (userData.auth.includes("ADMIN")) {
                 $("#button_new_event").removeAttr("disabled");
                 $("#button_chat").removeAttr("disabled");
-                $("#button_profile").removeAttr("disabled");
                 $("#button_admin_page").removeAttr("disabled");
-                $("#button_log_reg_form").attr("disabled", "disabled");
+                buttonLog_Profile(userData);
+
             }
-            if (JSON.parse(data).includes("USER")) {
+            if (userData.auth.includes("USER")) {
                 $("#button_new_event").removeAttr("disabled");
                 $("#button_chat").removeAttr("disabled");
-                $("#button_profile").removeAttr("disabled");
                 $("#button_admin_page").attr("disabled", "disabled");
-                $("#button_log_reg_form").attr("disabled", "disabled");
+                buttonLog_Profile(userData)
             }
-            if (JSON.parse(data).includes("STRIKED")) {
+            if (userData.auth.includes("STRIKED")) {
                 $("#button_new_event").attr("disabled", "disabled");
                 $("#button_chat").removeAttr("disabled");
-                $("#button_profile").removeAttr("disabled");
                 $("#button_admin_page").attr("disabled", "disabled");
-                $("#button_log_reg_form").attr("disabled", "disabled");
+                buttonLog_Profile(userData);
             }
         }
     })
+}
+
+function buttonLog_Profile(userdata) {
+    let bLogReg = $("#button_log_reg_form");
+    let bProfile = $("#button_profile");
+    console.log(userdata.auth);
+    console.log(userdata.username);
+    if (userdata.auth.includes("ANON")) {
+        bProfile.attr("id", "button_log_reg_form");
+        bLogReg.attr("data-path", "modal_log_reg");
+        bLogReg.html("sign in");
+    }
+    else {
+        bProfile.attr("id", "button_profile");
+        bLogReg.attr("data-path", "modal_profile");
+        bLogReg.html(userdata.username);
+    }
 }
 
 onLoadRequest();

@@ -7,9 +7,15 @@ import com.klozevitz.sportwithme2_0.services.entityServices.countryService.Count
 import com.klozevitz.sportwithme2_0.services.entityServices.roleService.RoleServiceImplementation;
 import com.klozevitz.sportwithme2_0.services.entityServices.userService.UserServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 import static com.klozevitz.sportwithme2_0.utilities.TablesInit.*;
 
@@ -30,7 +36,12 @@ public class OnLoadController {
         adminInit(userServiceImplementation);
         countryTableInit(countryServiceImplementation);
         cityTableInit(cityServiceImplementation);
-        return getJson(SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString());
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Map<String, String> set = new HashMap<>();
+        set.put("username", auth.getName());
+        set.put("auth", auth.getAuthorities().toString());
+
+        return getJson(set);
     }
 
     private String getJson(Object resp) {
