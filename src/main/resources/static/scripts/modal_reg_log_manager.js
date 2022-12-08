@@ -7,10 +7,13 @@ function chooseLogin() {
     $("#par_Register").css("font-weight", "normal");
     $("#par_Login").css("font-weight", "bold");
     $("#input_password_repeat").hide();
-    $("#form_login").attr("action", "/login");
+    // $("#form_login").attr("action", "/login");
+    $("#form_login").attr("data-path", "/login");
     let submit = $("#button_submit_form_login");
     submit.val("sign in");
     submit.removeAttr("disabled");
+    submit.off("click");
+    submit.on("click", function (){submit_login_button_change()});
 }
 
 function chooseRegister() {
@@ -20,10 +23,13 @@ function chooseRegister() {
     $("#par_Register").css("font-weight", "bold");
     $("#par_Login").css("font-weight", "normal");
     $("#input_password_repeat").show();
-    $("#form_login").attr("action", "/register");
+    // $("#form_login").attr("action", "/register");
+    $("#form_login").attr("data-path", "/register");
     let submit = $("#button_submit_form_login");
     submit.val("register");
     submit.attr('disabled', "disabled");
+    submit.off("click");
+    submit.on("click", function (){submit_login_button_change()});
 }
 
 function changeAbilitySubmitLoginButton() {
@@ -60,9 +66,9 @@ function onPasswordRepeatInput() {
     })
 }
 
-$("#button_submit_form_login").on("click", function () {
+function submit_login_button_change () {
     $.ajax({
-        url: $("#form_login").attr("action"),
+        url: $("#form_login").attr("data-path"),
         method: 'post',
         dataType: 'html',
         data: {
@@ -70,7 +76,8 @@ $("#button_submit_form_login").on("click", function () {
             password: $("#input_password").val()
         },
         success: function (data){
-            if(data === "Ok") {
+            console.log(data);
+            if(data) {
                 modalOverlay.classList.remove("modal-overlay--visible");
                 modals.forEach((e1) => {
                     e1.classList.remove("modals--visible");
@@ -81,4 +88,27 @@ $("#button_submit_form_login").on("click", function () {
             }
         }
     })
-});
+};
+
+// $("#button_submit_form_login").on("click", function () {
+//     $.ajax({
+//         url: $("#form_login").attr("action"),
+//         method: 'post',
+//         dataType: 'html',
+//         data: {
+//             username: $("#input_login").val(),
+//             password: $("#input_password").val()
+//         },
+//         success: function (data){
+//             if(data === "Ok") {
+//                 modalOverlay.classList.remove("modal-overlay--visible");
+//                 modals.forEach((e1) => {
+//                     e1.classList.remove("modals--visible");
+//                 })
+//             } else {
+//                 alert("Login is already in use");
+//                 flushRegistrationInputs();
+//             }
+//         }
+//     })
+// });
