@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SecurityServiceImplementation implements SecurityService{
+public class    SecurityServiceImplementation implements SecurityService{
     @Autowired
     AuthenticationManager authenticationManager;
     @Autowired

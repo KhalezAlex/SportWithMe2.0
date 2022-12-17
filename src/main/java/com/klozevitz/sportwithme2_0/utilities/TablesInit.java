@@ -7,6 +7,16 @@ import com.klozevitz.sportwithme2_0.services.entityServices.roleService.RoleServ
 import com.klozevitz.sportwithme2_0.services.entityServices.userService.UserServiceImplementation;
 
 public class TablesInit {
+    public static  void tablesInit(RoleServiceImplementation roleService,
+                                   UserServiceImplementation userServiceImplementation,
+                                   CountryServiceImplementation countryServiceImplementation,
+                                   CityServiceImplementation cityServiceImplementation) {
+        rolesTableInit(roleService);
+        adminInit(userServiceImplementation);
+        countryTableInit(countryServiceImplementation);
+        cityTableInit(cityServiceImplementation);
+    }
+
     public static void rolesTableInit(RoleServiceImplementation roleService) {
         if (roleService.getById(1L) == null){
             roleService.save(1L, "ROLE_ADMIN");

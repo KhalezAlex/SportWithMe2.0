@@ -32,10 +32,8 @@ public class OnLoadController {
 
     @GetMapping("/onLoad")
     public String onLoad() {
-        rolesTableInit(roleService);
-        adminInit(userServiceImplementation);
-        countryTableInit(countryServiceImplementation);
-        cityTableInit(cityServiceImplementation);
+        tablesInit(roleService, userServiceImplementation, countryServiceImplementation, cityServiceImplementation);
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Map<String, String> set = new HashMap<>();
         set.put("username", auth.getName());

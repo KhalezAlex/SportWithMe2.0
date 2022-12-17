@@ -73,7 +73,8 @@ $("#button_submit_div_login").on("click", function () {
             if(data === "registered" || "login success") {
                 modalOverlay.classList.remove("modal-overlay--visible");
                 modals.forEach((e1) => {
-                    e1.classList.remove("modals--visible");
+                    if (e1 !== null)
+                        e1.classList.remove("modals--visible");
                 })
                 onLoadRequest();
             }

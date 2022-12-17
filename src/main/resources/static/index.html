@@ -6,17 +6,15 @@
     <link media="all" rel="stylesheet" href="styles/index.css">
 </head>
 <body>
-<header>
+<header id="header">
     <div class="div_emblem" id="div_emblem">
     </div>
     <select class="select_city">
     </select>
     <button class="button button--0" id="button_new_event" data-path="modal_new_event">new event</button>
     <button class="button button--1" id="button_chat" data-path="modal_chat">chat</button>
-<!--    <button class="button button&#45;&#45;2" id="button_profile" data-path="modal_profile">profile</button>-->
-    <button class="button button--2" id="button_admin_page" data-path="modal_admin_page">admin page</button>
-<!--    <button class="button button&#45;&#45;4" id="button_log_reg_form" data-path="modal_log_reg">sign in</button>    -->
-    <button class="button button--3" id="button_log_reg_form" data-path="modal_log_reg"></button>
+    <button class="button button--2" id="button_admin" data-path="modal_admin_page">admin page</button>
+    <button class="button button--3" id="button_log_reg" data-path="modal_log_reg">sign in</button>
 </header>
 <div class="container">
     <div class="modal-overlay">
@@ -36,10 +34,29 @@
                     <input type="button" id="button_submit_div_login" class="input_reg_log_submit">
                 </form>
             </div>
-            <div id="modal_admin_page" class="modal modal--2" data-target="modal_admin_page">
+            <div id="modal_admin" class="modal modal--2" data-target="modal_admin_page">
                 admin <a href="/logout">   logout</a>
             </div>
             <div id="modal_profile" class="modal modal--2" data-target="modal_profile">
+                <div class="div_form_user_data">
+                    <div class="div_column_user_data" onclick="updateUserData()">
+                        <span id="par_phone" class="par_user_data">phone: </span>
+                        <input type="text" id="input_name" class="input_user_data" placeholder="name" name="name" hidden>
+                        <span id="par_age" class="par_user_data">name: </span>
+                        <input type="text" id="input_phone" class="input_user_data" placeholder="phone" name="phone" hidden>
+                        <span id="par_name" class="par_user_data">age: </span>
+                        <input type="text" id="input_age" class="input_user_data" placeholder="age" name="age" hidden>
+                        <span id="par_country" class="par_user_data">country: </span>
+                        <input type="text" id="input_country" class="input_user_data" placeholder="country" name="country" hidden>
+                        <span id="par_city" class="par_user_data">city: </span>
+                        <input type="text" id="input_city" class="input_user_data" placeholder="city" name="city" hidden>
+                    </div>
+                    <div class="div_column">
+                        <img src="" class="user_picture">
+                        <p class="input_user_data" id="username"></p>
+                    </div>
+                </div>
+                <input type="submit" id="input_submit_changes" class="input_submit_changes" value="accept changes" hidden>
                 user <a href="/logout">   logout</a>
             </div>
         </div>
