@@ -3,7 +3,9 @@ function onLoadRequest() {
         url: "/onLoad",
         type: "GET",
         success: function (data) {
-            refreshHeaderButtons(JSON.parse(data));
+            let userData = JSON.parse(data);
+            refreshHeaderButtons(userData);
+            displayUserData(userData);
         }
     })
     buttonModalsListeners();
@@ -76,27 +78,22 @@ function getLogProfileButton(isLogButton, userdata) {
     return button;
 }
 
+function displayUserData(userData) {
+    console.log(userData);
+    if (userData.user !== undefined) {
+        $("#span_username").html("#" + userData.user.username);
+        if (userData.user.name !== undefined)
+            $("#span_name").html("name: " + userData.user.name);
+        if (userData.user.age !== undefined)
+            $("#span_age").html("age: " + userData.user.age);
+        if (userData.user.phone !== undefined)
+            $("#span_phone").html("phone: " + userData.user.phone);
+        if (userData.user.city !== undefined) {
+            $("#span_city").html("city: " + userData.user.city.name);
+            $("#span_country").html("country: " + userData.user.city.country.name);
+        }
+    }
+}
+
 
 onLoadRequest();
-
-
-
-// function buttonLog_Profile(userdata) {
-//     let bLogReg = $("#button_log_reg");
-//     let bProfile = $("#button_profile");
-//     if (userdata.auth.includes("ANON")) {
-//         bProfile.attr("id", "button_log_reg");
-//         bLogReg.attr("data-path", "modal_log_reg");
-//         bLogReg.html("sign in");
-//     }
-//     else {
-//         bProfile.attr("id", "button_profile");
-//         bLogReg.attr("data-path", "modal_profile");
-//         bLogReg.html(userdata.username);
-//     }
-// }
-
-// function buttonLog_Profile(userdata) {
-//     document.getElementById("header").
-//                             appendChild(getLogProfileButton(userdata.auth.includes("ANON"), userdata));
-// }

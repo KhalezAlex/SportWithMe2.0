@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.klozevitz.sportwithme2_0.utilities.RestControllersUtilities.getJson;
 import static com.klozevitz.sportwithme2_0.utilities.TablesInit.*;
 
 @RestController
@@ -37,12 +38,5 @@ public class OnLoadController {
         else
             map.put("user", new UserDTO(userServiceImplementation.findByUsername(username)));
         return getJson(map);
-    }
-
-
-    private String getJson(Object resp) {
-        GsonBuilder builder = new GsonBuilder();
-        Gson response = builder.create();
-        return response.toJson(resp);
     }
 }

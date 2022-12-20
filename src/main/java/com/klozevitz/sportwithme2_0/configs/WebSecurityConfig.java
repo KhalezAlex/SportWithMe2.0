@@ -19,6 +19,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             "/onLoad", "/error_page", "/checkLoginForRegistration"};
     private static final String[] endpointsForAdmin = {"/admin_page"};
 
+    private static String[] endpointsForAuthenticated = {"/profile", "/loadCitiesCountries"};
+
     @Override
     public void configure(WebSecurity web) {
         web.ignoring().antMatchers("/styles/**", "/scripts/**");
@@ -32,7 +34,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 //                .and()
                 .authorizeRequests()
-                .antMatchers("/profile").hasAnyRole("ADMIN", "USER", "STRIKED")
+                .antMatchers(endpointsForAuthenticated).hasAnyRole("ADMIN", "USER", "STRIKED")
                 .antMatchers(endpointsForAdmin).hasRole("ADMIN")
                 .antMatchers(endpointsForAll).permitAll()
                 .anyRequest().authenticated()
