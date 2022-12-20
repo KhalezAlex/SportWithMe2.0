@@ -52,7 +52,6 @@ function refreshLoginProfileButton(userData) {
     document.getElementById("header").
         appendChild(getLogProfileButton(userData.user.roles[0].includes("ANON"), userData));
     buttonModalsListeners();
-    document.getElementById("username").innerText = userData.username;
 }
 
 function deleteLastButton() {

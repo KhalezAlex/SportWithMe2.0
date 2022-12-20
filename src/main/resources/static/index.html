@@ -19,7 +19,10 @@
 <div class="container">
     <div class="modal-overlay">
         <div class="modals">
-            <div id="modal_log_reg" class="modal modal--0">
+            <div id="modal_admin" class="modal modal--2">
+                admin <a href="/logout">   logout</a>
+            </div>
+            <div id="modal_log_reg" class="modal modal-3">
                 <div id="div_reg_log_choice" class="taskChoice">
                     <p class="parChoice" id="par_Login" onclick="chooseLogin()">Sign in</p>
                     <p class="parChoice" id="par_Register" onclick="chooseRegister()">Register</p>
@@ -34,10 +37,7 @@
                     <input type="button" id="button_submit_div_login" class="input_reg_log_submit">
                 </form>
             </div>
-            <div id="modal_admin" class="modal modal--1">
-                admin <a href="/logout">   logout</a>
-            </div>
-            <div id="modal_profile" class="modal modal--2">
+            <div id="modal_profile" class="modal modal--4">
                 <div class="div_form_user_data">
                     <div class="div_column_user_data" onclick="updateUserData()">
                         <span id="par_phone" class="par_user_data">phone: </span>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="div_column">
                         <img src="" class="user_picture">
-                        <p class="input_user_data" id="username"></p>
+                        <p class="input_user_data" id="p_username"></p>
                     </div>
                 </div>
                 <input type="submit" id="input_submit_changes" class="input_submit_changes" value="accept changes" hidden>
