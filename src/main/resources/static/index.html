@@ -11,15 +11,15 @@
     </div>
     <select class="select_city">
     </select>
-    <button class="button button--0" id="button_new_event" data-path="modal_new_event">new event</button>
-    <button class="button button--1" id="button_chat" data-path="modal_chat">chat</button>
-    <button class="button button--2" id="button_admin" data-path="modal_admin_page">admin page</button>
-    <button class="button button--3" id="button_log_reg" data-path="modal_log_reg">sign in</button>
+    <button class="button button--0" id="button_new_event">new event</button>
+    <button class="button button--1" id="button_chat">chat</button>
+    <button class="button button--2" id="button_admin">admin page</button>
+    <button class="button button--3" id="button_log_reg">sign in</button>
 </header>
 <div class="container">
     <div class="modal-overlay">
         <div class="modals">
-            <div id="modal_log_reg" class="modal modal--1" data-target="modal_log_reg">
+            <div id="modal_log_reg" class="modal modal--0">
                 <div id="div_reg_log_choice" class="taskChoice">
                     <p class="parChoice" id="par_Login" onclick="chooseLogin()">Sign in</p>
                     <p class="parChoice" id="par_Register" onclick="chooseRegister()">Register</p>
@@ -34,10 +34,10 @@
                     <input type="button" id="button_submit_div_login" class="input_reg_log_submit">
                 </form>
             </div>
-            <div id="modal_admin" class="modal modal--2" data-target="modal_admin_page">
+            <div id="modal_admin" class="modal modal--1">
                 admin <a href="/logout">   logout</a>
             </div>
-            <div id="modal_profile" class="modal modal--2" data-target="modal_profile">
+            <div id="modal_profile" class="modal modal--2">
                 <div class="div_form_user_data">
                     <div class="div_column_user_data" onclick="updateUserData()">
                         <span id="par_phone" class="par_user_data">phone: </span>

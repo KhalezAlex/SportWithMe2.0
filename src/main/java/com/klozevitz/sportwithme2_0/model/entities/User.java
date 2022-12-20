@@ -1,4 +1,4 @@
-package com.klozevitz.sportwithme2_0.model;
+package com.klozevitz.sportwithme2_0.model.entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -18,8 +18,8 @@ public class User {
     private String phone;
     @Column(name = "name")
     private String name;
-    @Column(name = "date_of_birth")
-    private LocalDate date_of_birth;
+    @Column(name = "age")
+    private Integer age;
     @Column(name = "events_organized")
     private Integer events_organized;
     @Column(name = "strikes_amount")
@@ -27,12 +27,27 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "city_id")
     private City city;
-    @ManyToMany
+    @ManyToMany (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
     public User() {
+    }
+
+    public User(Long id, String username, String password, String phone, String name,
+                Integer age, Integer events_organized,
+                Integer strikes_amount, City city, Set<Role> roles) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.phone = phone;
+        this.name = name;
+        this.age = age;
+        this.events_organized = events_organized;
+        this.strikes_amount = strikes_amount;
+        this.city = city;
+        this.roles = roles;
     }
 
     public User(String username, String password, Set<Role> roles) {
@@ -102,12 +117,12 @@ public class User {
         this.name = name;
     }
 
-    public LocalDate getDate_of_birth() {
-        return date_of_birth;
+    public Integer getAge() {
+        return age;
     }
 
-    public void setDate_of_birth(LocalDate date_of_birth) {
-        this.date_of_birth = date_of_birth;
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public Integer getEvents_organized() {
@@ -124,5 +139,19 @@ public class User {
 
     public void setStrikes_amount(Integer strikes_amount) {
         this.strikes_amount = strikes_amount;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "username='" + username + '\'' +
+                ", phone='" + phone + '\'' +
+                ", name='" + name + '\'' +
+                ", date_of_birth=" + age +
+                ", events_organized=" + events_organized +
+                ", strikes_amount=" + strikes_amount +
+                ", city=" + city +
+//                ", roles=" + roles +
+                '}';
     }
 }

@@ -1,7 +1,7 @@
 package com.klozevitz.sportwithme2_0.services.entityServices.countryService;
 
 
-import com.klozevitz.sportwithme2_0.model.Country;
+import com.klozevitz.sportwithme2_0.model.entities.Country;
 
 public interface CountryService {
 //    void save(Long id, String name);

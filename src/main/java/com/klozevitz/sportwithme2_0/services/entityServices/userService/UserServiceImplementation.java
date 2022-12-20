@@ -2,8 +2,8 @@ package com.klozevitz.sportwithme2_0.services.entityServices.userService;
 
 import com.klozevitz.sportwithme2_0.dao.RoleDAO;
 import com.klozevitz.sportwithme2_0.dao.UserDAO;
-import com.klozevitz.sportwithme2_0.model.Role;
-import com.klozevitz.sportwithme2_0.model.User;
+import com.klozevitz.sportwithme2_0.model.entities.Role;
+import com.klozevitz.sportwithme2_0.model.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -25,7 +25,6 @@ public class UserServiceImplementation implements UserService {
     @Override
     @Transactional
     public boolean save(User user) {
-        System.out.println("Один парраметр");
         if (userDAO.findByUsername(user.getUsername()) != null)
             return false;
         user.setPassword(encoder.encode(user.getPassword()));
@@ -39,7 +38,6 @@ public class UserServiceImplementation implements UserService {
     @Override
     @Transactional
     public boolean save(User user, Long roleId) {
-        System.out.println("Два парраметр");
         if (userDAO.findByUsername(user.getUsername()) != null)
             return false;
         user.setPassword(encoder.encode(user.getPassword()));

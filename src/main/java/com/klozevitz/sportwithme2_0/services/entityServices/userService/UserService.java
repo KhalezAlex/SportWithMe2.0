@@ -1,6 +1,6 @@
 package com.klozevitz.sportwithme2_0.services.entityServices.userService;
 
-import com.klozevitz.sportwithme2_0.model.User;
+import com.klozevitz.sportwithme2_0.model.entities.User;
 
 public interface UserService {
     boolean save(User user);

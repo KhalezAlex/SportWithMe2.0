@@ -1,6 +1,6 @@
 package com.klozevitz.sportwithme2_0.utilities;
 
-import com.klozevitz.sportwithme2_0.model.User;
+import com.klozevitz.sportwithme2_0.model.entities.User;
 import com.klozevitz.sportwithme2_0.services.entityServices.cityService.CityServiceImplementation;
 import com.klozevitz.sportwithme2_0.services.entityServices.countryService.CountryServiceImplementation;
 import com.klozevitz.sportwithme2_0.services.entityServices.roleService.RoleServiceImplementation;

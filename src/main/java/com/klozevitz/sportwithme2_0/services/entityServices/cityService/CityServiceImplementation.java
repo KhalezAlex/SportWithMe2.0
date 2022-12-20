@@ -1,7 +1,7 @@
 package com.klozevitz.sportwithme2_0.services.entityServices.cityService;
 
 import com.klozevitz.sportwithme2_0.dao.CityDAO;
-import com.klozevitz.sportwithme2_0.model.City;
+import com.klozevitz.sportwithme2_0.model.entities.City;
 import com.klozevitz.sportwithme2_0.services.entityServices.countryService.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

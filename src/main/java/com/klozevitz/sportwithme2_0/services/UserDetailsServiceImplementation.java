@@ -1,8 +1,8 @@
 package com.klozevitz.sportwithme2_0.services;
 
 import com.klozevitz.sportwithme2_0.dao.UserDAO;
-import com.klozevitz.sportwithme2_0.model.Role;
-import com.klozevitz.sportwithme2_0.model.User;
+import com.klozevitz.sportwithme2_0.model.entities.Role;
+import com.klozevitz.sportwithme2_0.model.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

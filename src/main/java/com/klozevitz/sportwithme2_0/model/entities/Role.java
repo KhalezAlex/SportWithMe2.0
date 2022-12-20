@@ -1,4 +1,4 @@
-package com.klozevitz.sportwithme2_0.model;
+package com.klozevitz.sportwithme2_0.model.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -12,7 +12,7 @@ public class Role implements Serializable {
     private Long id;
     @Column(name = "name")
     private String name;
-    @ManyToMany(mappedBy = "roles")
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
     private Set<User> users;
 
     public Role(Long id, String name) {
