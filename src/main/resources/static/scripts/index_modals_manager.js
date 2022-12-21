@@ -54,6 +54,9 @@ modalOverlay.addEventListener("click", (e) => {
             if (e1 != null)
                 e1.classList.remove("modals--visible");
         })
+        hideInputs();
+        showSpans();
+        clickToUpdateProfileListener();
     }
 })
 
