@@ -1,19 +1,28 @@
-let dataPaths = ["log_reg", "profile", "admin", "new_event", "chat"]
+let dataPaths = ["profile", "log_reg", "admin", "new_event", "chat"];
 const modalOverlay = document.querySelector(".modal-overlay");
-const modals = [document.getElementById("modal_profile"), document.getElementById("modal_log_reg"),
-    document.getElementById("modal_admin")]
+// const modals = [document.getElementById("modal_profile"), document.getElementById("modal_log_reg"),
+//     document.getElementById("modal_admin")];
+const modals = [$("#modal_profile"), $("#modal_log_reg"), $("#modal_admin")];
 
 buttonModalsListeners();
 
 function hideModalsExceptTarget(path) {
-    modals.forEach((e1) => {
-        if (e1 !== null) e1.classList.remove("modals--visible")
-    });
-    if (document.getElementById(path) != null) {
-        document.getElementById(path).classList.add(path)
-        document.getElementById(path).classList.add("modals--visible");
-    }
-    modalOverlay.classList.add("modal-overlay--visible");
+    // modals.forEach((e1) => {
+    //     if (e1 !== null)
+    //         e1.classList.remove("modals--visible");
+    // });
+    // if (document.getElementById(path) != null) {
+    //     document.getElementById(path).classList.add(path);
+    //     document.getElementById(path).classList.add("modals--visible");
+    // }
+    // modalOverlay.classList.add("modal-overlay--visible");
+    dataPaths.forEach((e) => {
+        $("#modal_" + e).attr("class", "modal");
+    })
+    let modal = $("#" + path);
+    if (modal !== null)
+        modal.attr("class", path);
+    modalOverlay.classList.add("modal-overlay--visible")
 }
 
 
@@ -52,11 +61,12 @@ modalOverlay.addEventListener("click", (e) => {
         modalOverlay.classList.remove("modal-overlay--visible");
         modals.forEach((e1) => {
             if (e1 != null)
-                e1.classList.remove("modals--visible");
+                e1.attr("class", "modal");
         })
         hideInputs();
         showSpans();
         clickToUpdateProfileListener();
+        onLoadRequest();
     }
 })
 

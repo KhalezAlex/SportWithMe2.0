@@ -1,6 +1,6 @@
 package com.klozevitz.sportwithme2_0.services.securityService;
 
-import com.klozevitz.sportwithme2_0.services.entityServices.userService.UserServiceImplementation;
+import com.klozevitz.sportwithme2_0.services.entityServices.userService.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -10,13 +10,13 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class    SecurityServiceImplementation implements SecurityService{
+public class SecurityServiceImplementation implements SecurityService{
     @Autowired
     AuthenticationManager authenticationManager;
     @Autowired
     UserDetailsService userDetailsService;
     @Autowired
-    UserServiceImplementation userService;
+    UserService userService;
 
 
     @Override

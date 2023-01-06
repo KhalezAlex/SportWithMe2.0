@@ -28,7 +28,7 @@ function showInputs() {
     $("#input_phone").show();
     $("#select_city").show();
     $("#select_country").show();
-    $("#input_submit_profile_changes").show();
+    $("#button_submit_profile_changes").show();
     geoSelectsComplete();
 }
 
@@ -38,7 +38,7 @@ function hideInputs() {
     $("#input_phone").hide();
     $("#select_city").hide();
     $("#select_country").hide();
-    $("#input_submit_profile_changes").hide();
+    $("#button_submit_profile_changes").hide();
 }
 
 function geoSelectsComplete() {
@@ -48,7 +48,8 @@ function geoSelectsComplete() {
         success: function (data) {
             let geoData = JSON.parse(data);
             addOptions(geoData.countries,"select_country");
-            addOptions(geoData.cities, "select_city"    );
+            addOptions(geoData.cities, "select_city");
+            setUserGeoDataSelected();
         }
     })
 }
@@ -64,5 +65,38 @@ function addOptions(values, selectId) {
         document.getElementById(selectId).appendChild(getOption(values[i]));
 }
 
+function setUserGeoDataSelected() {
+    $.ajax({
+        url: "/onLoad",
+        type: "GET",
+        success: function (data) {
+            let userData = JSON.parse(data);
+            if (userData.user.city === undefined)
+                return;
+            document.getElementById("select_country").value = userData.user.city.country.name;
+            document.getElementById("select_city").value = userData.user.city.name;
+        }
+    })
+}
+
+function setSubmitChangesButtonListener() {
+    $("#button_submit_profile_changes").on('click', function() {
+        $.ajax({
+            url: "/updateProfile",
+            type: "GET",
+            data: {
+                username: $("#span_username").text().substring(1),
+                name: $("#input_name").val(),
+                age: $("#input_age").val(),
+                phone: $("#input_phone").val(),
+                cityName: $("#select_city").val()
+            },
+            success: function(data) {
+                console.log(data);
+            }
+        })
+    })
+}
 
 clickToUpdateProfileListener();
+setSubmitChangesButtonListener();

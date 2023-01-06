@@ -9,6 +9,7 @@ function onLoadRequest() {
         }
     })
     buttonModalsListeners();
+    chooseLogin();
 }
 
 function refreshHeaderButtons(userData) {
@@ -52,15 +53,18 @@ function strikedUserButtons() {
 function refreshLoginProfileButton(userData) {
     deleteLastButton();
     document.getElementById("header").
-        appendChild(getLogProfileButton(userData.user.roles[0].includes("ANON"), userData));
+                appendChild(getLogProfileButton(userData.user.roles[0].includes("ANON"), userData));
     buttonModalsListeners();
 }
 
 function deleteLastButton() {
-    let logRegBtn = $("#button_log_reg");
-    if (logRegBtn != null)
-        logRegBtn.remove();
-    else $("#button_profile").remove();
+    $("#button_log_reg").remove();
+    $("#button_profile").remove();
+    // let logRegBtn = $("#button_log_reg");
+    // if (logRegBtn !== null)
+    //     logRegBtn.remove();
+    // else
+    //     $("#button_profile").remove();
 }
 
 function getLogProfileButton(isLogButton, userdata) {
@@ -69,8 +73,7 @@ function getLogProfileButton(isLogButton, userdata) {
         button.setAttribute("id", "button_log_reg");
         button.innerText = "sign in"
         button.classList.add("button")
-    }
-    else {
+    } else {
         button.setAttribute("id", "button_profile");
         button.innerText = userdata.user.username;
         button.classList.add("button")
@@ -79,21 +82,42 @@ function getLogProfileButton(isLogButton, userdata) {
 }
 
 function displayUserData(userData) {
-    console.log(userData);
-    if (userData.user !== undefined) {
-        $("#span_username").html("#" + userData.user.username);
-        if (userData.user.name !== undefined)
-            $("#span_name").html("name: " + userData.user.name);
-        if (userData.user.age !== undefined)
-            $("#span_age").html("age: " + userData.user.age);
-        if (userData.user.phone !== undefined)
-            $("#span_phone").html("phone: " + userData.user.phone);
-        if (userData.user.city !== undefined) {
-            $("#span_city").html("city: " + userData.user.city.name);
-            $("#span_country").html("country: " + userData.user.city.country.name);
-        }
-    }
+    if (userData.user === undefined)
+        return;
+    $("#span_username").html("#" + userData.user.username);
+    displayName(userData.user.name);
+    displayAge(userData.user.age);
+    displayPhone(userData.user.phone);
+    displayGeoData(userData.user.city)
 }
 
+function displayName(name) {
+    if (name === undefined)
+        return;
+    $("#span_name").html("name: " + name);
+    $("#input_name").val(name);
+}
+
+function displayAge(age) {
+    if (age === undefined)
+        return;
+    $("#span_age").html("age: " + age);
+    $("#input_age").val(age);
+}
+
+function displayPhone(phone) {
+    if (phone === undefined)
+        return;
+    $("#span_phone").html("phone: " + phone);
+    $("#input_phone").val(phone);
+}
+
+function displayGeoData(city) {
+    if (city === undefined)
+        return;
+    $("#span_city").html("city: " + city.name);
+    $("#span_country").html("country: " + city.country.name);
+
+}
 
 onLoadRequest();

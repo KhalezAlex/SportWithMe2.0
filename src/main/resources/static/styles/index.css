@@ -202,6 +202,9 @@ footer {
     border-radius: 10px;
     background-color: rgb(227, 227, 227);
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .div_form_user_data {
@@ -213,8 +216,7 @@ footer {
 .div_column {
     width: 40%;
     height: 70%;
-    margin: 30px auto auto;
-    margin-bottom: 30px;
+    margin: 15px auto auto;
     background-color: darkseagreen;
     display: flex;
     flex-direction: column;
@@ -224,8 +226,7 @@ footer {
 .div_column_user_data {
     width: 40%;
     height: 85%;
-    margin: 30px auto auto;
-    margin-bottom: 30px;
+    margin: 15px auto auto;
     background-color: darkseagreen;
     display: flex;
     flex-direction: column;
@@ -253,10 +254,10 @@ footer {
     padding-bottom: 12px;
 }
 
-.input_submit_changes {
-    margin-top: 25px;
-    width: 60% ;
+.button_submit_profile_changes {
+    width: 50% ;
     height: 38px;
+    margin-top: 10px;
     background-color: #DF5F5FFF;
     border-style: none;
     border-radius: 7px;

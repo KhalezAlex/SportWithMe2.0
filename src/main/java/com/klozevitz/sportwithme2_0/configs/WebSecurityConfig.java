@@ -19,7 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             "/onLoad", "/error_page", "/checkLoginForRegistration"};
     private static final String[] endpointsForAdmin = {"/admin_page"};
 
-    private static String[] endpointsForAuthenticated = {"/profile", "/loadCitiesCountries"};
+    private static final String[] endpointsForAuthenticated = {"/profile", "/loadCitiesCountries", "/updateProfile"};
 
     @Override
     public void configure(WebSecurity web) {

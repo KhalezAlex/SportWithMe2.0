@@ -17,9 +17,9 @@ public class City {
 
     public City() {}
 
-//    public City(String name) {
-//        this.name = name;
-//    }
+    public City(String name) {
+        this.name = name;
+    }
 
     public City(String name, Country country) {
         this.name = name;
@@ -44,6 +44,13 @@ public class City {
 
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    @Override
+    public String toString() {
+        return "{name='" + name + '\'' +
+                ", country=" + country +
+                '}';
     }
 }
 

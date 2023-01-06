@@ -1,11 +1,9 @@
 package com.klozevitz.sportwithme2_0.controllers;
 
-import com.klozevitz.sportwithme2_0.dao.CityDAO;
-import com.klozevitz.sportwithme2_0.dao.CountryDAO;
+import com.klozevitz.sportwithme2_0.model.dao.ICityDAO;
+import com.klozevitz.sportwithme2_0.model.dao.ICountryDAO;
 import com.klozevitz.sportwithme2_0.model.entities.City;
 import com.klozevitz.sportwithme2_0.model.entities.Country;
-import com.klozevitz.sportwithme2_0.services.entityServices.cityService.CityServiceImplementation;
-import com.klozevitz.sportwithme2_0.services.entityServices.countryService.CountryServiceImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,21 +18,33 @@ import static com.klozevitz.sportwithme2_0.utilities.RestControllersUtilities.ge
 @RestController
 public class LoadCitiesCountriesController {
     @Autowired
-    CityDAO cityDAO;
+    ICityDAO ICityDAO;
     @Autowired
-    CountryDAO countryDAO;
+    ICountryDAO ICountryDAO;
 
     @GetMapping("/loadCitiesCountries")
     public String loadCitiesCountries() {
-        List<String> cities = new LinkedList<>();
-        for (City city: cityDAO.findAll())
-            cities.add(city.getName());
-        List<String> countries = new LinkedList<>();
-        for (Country country: countryDAO.findAll())
-            countries.add(country.getName());
+        return getJson(getDTO());
+    }
+
+    private Map<String, List<String>> getDTO() {
         Map<String, List<String>> map = new HashMap<>();
-        map.put("countries", countries);
-        map.put("cities", cities);
-        return getJson(map);
+        map.put("countries", getCountries());
+        map.put("cities", getCities());
+        return map;
+    }
+
+    private List<String> getCities() {
+        List<String> cities = new LinkedList<>();
+        for (City city: ICityDAO.findAll())
+            cities.add(city.getName());
+        return cities;
+    }
+
+    private List<String> getCountries() {
+        List<String> countries = new LinkedList<>();
+        for (Country country: ICountryDAO.findAll())
+            countries.add(country.getName());
+        return countries;
     }
 }

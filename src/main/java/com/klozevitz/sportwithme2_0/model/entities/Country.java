@@ -35,8 +35,8 @@ public class Country {
         this.name = name;
     }
 
-    //    public Country(String name, Set<City> cities) {
-//        this.name = name;
-//        this.cities = cities;
-//    }
+    @Override
+    public String toString() {
+        return "{name='" + name + "'}";
+    }
 }

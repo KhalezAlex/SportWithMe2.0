@@ -74,7 +74,7 @@ $("#button_submit_div_login").on("click", function () {
                 modalOverlay.classList.remove("modal-overlay--visible");
                 modals.forEach((e1) => {
                     if (e1 !== null)
-                        e1.classList.remove("modals--visible");
+                        e1.attr("class", "modal");
                 })
                 onLoadRequest();
             }

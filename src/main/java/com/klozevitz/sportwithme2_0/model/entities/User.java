@@ -1,7 +1,6 @@
 package com.klozevitz.sportwithme2_0.model.entities;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
@@ -61,6 +60,15 @@ public class User {
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+        this.events_organized = 0;
+        this.strikes_amount = 0;
+    }
+
+    public User(String username, String name, Integer age, String phone) {
+        this.username = username;
+        this.name = name;
+        this.age = age;
+        this.phone = phone;
         this.events_organized = 0;
         this.strikes_amount = 0;
     }
