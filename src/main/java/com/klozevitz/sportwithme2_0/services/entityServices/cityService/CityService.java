@@ -9,19 +9,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class CityService {
     @Autowired
-    private ICityDAO iCityDAO;
+    private ICityDAO cityDAO;
     @Autowired
     private CountryService countryService;
 
     public void save(String cityName, String countryName) {
-        iCityDAO.save(new City(cityName, countryService.getByName(countryName)));
+        cityDAO.save(new City(cityName, countryService.getByName(countryName)));
     }
 
     public City getByName(String name) {
-        return iCityDAO.getByName(name);
+        return cityDAO.getByName(name);
     }
 
     public City getById(Long id) {
-        return iCityDAO.findById(id).orElse(null);
+        return cityDAO.findById(id).orElse(null);
     }
 }

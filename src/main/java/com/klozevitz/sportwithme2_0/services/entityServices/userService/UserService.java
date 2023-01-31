@@ -15,48 +15,48 @@ import java.util.Set;
 @Service
 public class UserService {
     @Autowired
-    IUserDAO IUserDAO;
+    IUserDAO userDAO;
     @Autowired
-    IRoleDAO IRoleDAO;
+    IRoleDAO roleDAO;
 
     @Autowired
     BCryptPasswordEncoder encoder;
 
     @Transactional
     public boolean save(User user) {
-        if (IUserDAO.findByUsername(user.getUsername()) != null)
+        if (userDAO.findByUsername(user.getUsername()) != null)
             return false;
         user.setPassword(encoder.encode(user.getPassword()));
         Set<Role> roles = new HashSet<>();
-        roles.add(IRoleDAO.getOne(2L));
+        roles.add(roleDAO.getOne(2L));
         user.setRoles(roles);
-        IUserDAO.save(user);
+        userDAO.save(user);
         return true;
     }
 
     @Transactional
     public boolean save(User user, Long roleId) {
-        if (IUserDAO.findByUsername(user.getUsername()) != null)
+        if (userDAO.findByUsername(user.getUsername()) != null)
             return false;
         user.setPassword(encoder.encode(user.getPassword()));
         Set<Role> roles = new HashSet<>();
-        roles.add(IRoleDAO.getOne(roleId));
+        roles.add(roleDAO.getOne(roleId));
         user.setRoles(roles);
-        IUserDAO.save(user);
+        userDAO.save(user);
         return true;
     }
 
     public boolean update(User user, String username) {
-        if (IUserDAO.findByUsername(username) != null)
+        if (userDAO.findByUsername(username) != null)
             user = null;
         return true;
     }
 
     public User findByUsername(String username) {
-        return IUserDAO.findByUsername(username);
+        return userDAO.findByUsername(username);
     }
 
     public boolean checkLogin(String username) {
-        return IUserDAO.findByUsername(username)!= null;
+        return userDAO.findByUsername(username)!= null;
     }
 }

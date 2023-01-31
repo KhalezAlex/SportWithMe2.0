@@ -14,7 +14,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.klozevitz.sportwithme2_0.utilities.RestControllersUtilities.getJson;
-import static com.klozevitz.sportwithme2_0.utilities.TablesInit.tablesInit;
 
 @RestController
 public class OnLoadController {
@@ -30,10 +29,10 @@ public class OnLoadController {
     @GetMapping("/onLoad")
     public String onLoad() {
 //        tablesInit(roleService, userService, countryService, cityService);
-        return getJson(getDto());
+        return getJson(getRegisteredUserDto());
     }
 
-    private Map<String, UserDTO> getDto() {
+    private Map<String, UserDTO> getRegisteredUserDto() {
         Map<String, UserDTO> map = new HashMap<>();
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         if (username.equals("anonymousUser"))

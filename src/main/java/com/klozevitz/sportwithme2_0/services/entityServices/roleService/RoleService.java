@@ -8,13 +8,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class RoleService {
     @Autowired
-    private IRoleDAO IRoleDAO;
+    private IRoleDAO roleDAO;
 
     public void save(Long id, String name) {
-        IRoleDAO.save(new Role(id, name));
+        roleDAO.save(new Role(id, name));
     }
 
     public Role getById(Long id) {
-        return IRoleDAO.findById(id).orElse(null);
+        return roleDAO.findById(id).orElse(null);
     }
 }

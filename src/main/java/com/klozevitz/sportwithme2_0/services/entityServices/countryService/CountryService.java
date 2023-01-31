@@ -8,17 +8,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class CountryService {
     @Autowired
-    ICountryDAO ICountryDAO;
+    ICountryDAO countryDAO;
 
     public void save(String name) {
-        ICountryDAO.save(new Country(name));
+        countryDAO.save(new Country(name));
     }
 
     public Country getByName(String countryName) {
-        return ICountryDAO.findByName(countryName);
+        return countryDAO.findByName(countryName);
     }
 
     public Country getById(Long id) {
-        return ICountryDAO.findById(id).orElse(null);
+        return countryDAO.findById(id).orElse(null);
     }
 }
