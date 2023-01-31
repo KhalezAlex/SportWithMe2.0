@@ -31,6 +31,31 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
+    @OneToMany
+    @Column(name = "eventsOrganized_id")
+    private Set<Event> eventsOrganized;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "user_events", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "event_id"))
+    private Set<Event> memberOfEvents;
+
+    public Set<Event> getEventsOrganized() {
+        return eventsOrganized;
+    }
+
+    public void setEventsOrganized(Set<Event> eventsOrganized) {
+        this.eventsOrganized = eventsOrganized;
+    }
+
+    public Set<Event> getMemberOfEvents() {
+        return memberOfEvents;
+    }
+
+    public void setMemberOfEvents(Set<Event> memberOfEvents) {
+        this.memberOfEvents = memberOfEvents;
+    }
+
     public User() {
     }
 

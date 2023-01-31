@@ -1,6 +1,8 @@
 package com.klozevitz.sportwithme2_0.model.entities;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "cities")
@@ -14,6 +16,18 @@ public class City {
     @ManyToOne
     @JoinColumn(name = "country_id")
     private Country country;
+
+    @OneToMany
+    @Column(name = "events_id")
+    private Set<Event> events;
+
+    public Set<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(Set<Event> events) {
+        this.events = events;
+    }
 
     public City() {}
 
